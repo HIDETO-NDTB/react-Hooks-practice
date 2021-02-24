@@ -20,6 +20,7 @@ const App = () => {
     setTitle('');
     setBody('');
   }
+  console.log({ state });
 
   return (
     <div className="container-fluid">
