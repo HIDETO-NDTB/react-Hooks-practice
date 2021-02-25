@@ -49,8 +49,8 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {state.map((event, index) => (
-            <Event key={index} event={event} dispatch={dispatch}/>
+          {state.map((event) => (
+            <Event key={event.id} event={event} dispatch={dispatch}/>
           ))}
         </tbody>
       </table>
