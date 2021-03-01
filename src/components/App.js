@@ -6,7 +6,8 @@ import Events from './Events';
 import AppContext from '../contexts/AppContext';
 
 const initialState = {
-  events: []
+  events: [],
+  operationLogs: []
 }
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
