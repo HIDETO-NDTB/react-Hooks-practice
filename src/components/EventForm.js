@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { CREATE_EVENT, DELETE_ALL_EVENTS } from '../actions';
+import { CREATE_EVENT, DELETE_ALL_EVENTS, ADD_OPERATION_LOG } from '../actions';
+import { timeCurrentIso8601 } from '../utils';
 import AppContext from '../contexts/AppContext';
 
 const EventForm = () => {
@@ -16,6 +17,11 @@ const EventForm = () => {
         })
     setTitle('');
     setBody('');
+        dispatch({
+            type: ADD_OPERATION_LOG,
+            description: 'イベントを作成しました',
+            operatedAt: timeCurrentIso8601()
+        })
     };
 
     const deleteAllEvents = e => {
@@ -23,6 +29,11 @@ const EventForm = () => {
         if (window.confirm('全てのイベントを削除してよろしいですか？')) {
             dispatch({
                 type: DELETE_ALL_EVENTS
+            })
+            dispatch({
+                type: ADD_OPERATION_LOG,
+                description: '全てのイベントを削除しました',
+                operatedAt: timeCurrentIso8601()
             })
         }
     }
